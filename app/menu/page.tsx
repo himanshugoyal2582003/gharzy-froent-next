@@ -280,8 +280,8 @@ function MenuContent() {
 
       {/* Floating Bottom Cart Viewer if items exist */}
       {totalQuantity > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 p-4 z-40 bg-gradient-to-t from-slate-50 via-slate-50/90 to-transparent pointer-events-none pb-safe">
-          <div className="pointer-events-auto shadow-[0_10px_40px_rgba(226,55,68,0.3)] bg-gradient-to-r from-[#E23744] to-[#f0535e] rounded-2xl p-4 flex justify-between items-center animate-[popIn_0.3s_ease-out_forwards] translate-y-10 opacity-0 relative overflow-hidden group">
+        <div className="fixed bottom-6 left-0 right-0 px-4 z-40 pointer-events-none flex justify-center">
+          <div className="w-full pointer-events-auto shadow-[0_10px_40px_rgba(226,55,68,0.3)] bg-gradient-to-r from-[#E23744] to-[#f0535e] rounded-2xl p-4 flex justify-between items-center animate-[popIn_0.3s_ease-out_forwards] relative overflow-hidden group">
             <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full skew-x-12 group-hover:animate-[shimmer_1.5s_infinite]"></div>
             
             <div className="flex flex-col text-white">
@@ -301,6 +301,10 @@ function MenuContent() {
 
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes popIn {
+          from {
+            transform: translateY(20px);
+            opacity: 0;
+          }
           to {
             transform: translateY(0);
             opacity: 1;
@@ -310,9 +314,6 @@ function MenuContent() {
           100% {
             transform: translateX(100%);
           }
-        }
-        .pb-safe {
-          padding-bottom: env(safe-area-inset-bottom, 24px);
         }
       `}} />
     </div>
