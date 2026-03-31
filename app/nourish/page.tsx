@@ -43,7 +43,10 @@ export default function NourishPage() {
     setLoading(true);
 
     try {
-      const parseRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/parse-text`, {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+      
+      // 🧠 Step 1: Parse text using AI
+      const parseRes = await fetch(`${API_URL}/parse-text`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -54,7 +57,7 @@ export default function NourishPage() {
       const parsed = await parseRes.json();
 
       // 🍱 Step 2: Get recommendations
-      const mealRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/recommend-meals`, {
+      const mealRes = await fetch(`${API_URL}/recommend-meals`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
